@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: campus-chatbot
+    runtime: node
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: GEMINI_API_KEY
+        sync: false # User must set this in Render Dashboard
+      - key: GEMINI_MODEL
+        value: gemini-2.0-flash
+      - key: PORT
+        value: 10000
