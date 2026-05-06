@@ -39,14 +39,12 @@ function isAllowedOrigin(origin) {
 app.use(helmet());
 app.use(
   cors({
-    origin(origin, callback) {
-      if (isAllowedOrigin(origin)) {
-        callback(null, true);
-        return;
-      }
-
-      callback(new Error("Not allowed by CORS"));
-    },
+    origin: [
+      "http://localhost:5173",
+      "https://ai-campus-chatbot-frontend.vercel.app",
+    ],
+    methods: ["GET", "POST"],
+    credentials: true,
   })
 );
 app.use(express.json({ limit: "1mb" }));

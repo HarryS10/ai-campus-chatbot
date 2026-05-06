@@ -13,6 +13,6 @@ services:
       - key: GEMINI_MODEL
         value: gemini-2.0-flash
       - key: CLIENT_ORIGIN
-        value: https://nist-ai-campus-chatbot.vercel.app
+        value: https://ai-campus-chatbot-frontend.vercel.app
       - key: PORT
         value: 10000
