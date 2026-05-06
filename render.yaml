@@ -3,14 +3,16 @@ services:
     name: campus-chatbot
     runtime: node
     plan: free
-    buildCommand: npm install && npm run build
-    startCommand: npm start
+    buildCommand: npm install --workspace backend
+    startCommand: npm start --workspace backend
     envVars:
       - key: NODE_ENV
         value: production
       - key: GEMINI_API_KEY
-        sync: false # User must set this in Render Dashboard
+        sync: false
       - key: GEMINI_MODEL
         value: gemini-2.0-flash
+      - key: CLIENT_ORIGIN
+        value: https://nist-ai-campus-chatbot.vercel.app
       - key: PORT
         value: 10000

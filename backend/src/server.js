@@ -58,19 +58,6 @@ app.get("/health", (_req, res) => {
 
 app.use("/chat", chatRouter);
 
-// Serve frontend static files in production
-if (isProduction) {
-  const distPath = resolve(__dirname, "../../frontend/dist");
-  app.use(express.static(distPath));
-
-  // Catch-all route to serve index.html for SPA routing
-  app.get("*", (req, res) => {
-    // Only serve index.html for non-API requests
-    if (!req.path.startsWith("/chat")) {
-      res.sendFile(resolve(distPath, "index.html"));
-    }
-  });
-}
 
 app.use((err, _req, res, _next) => {
   console.error(err);
